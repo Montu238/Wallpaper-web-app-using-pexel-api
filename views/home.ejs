@@ -1,0 +1,297 @@
+
+<html>
+<head>
+    <title>Spexels - Wallpaper Downloader</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        header {
+            background-color: #1f1f1f;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+            transition: transform 0.3s;
+        }
+
+        nav ul li:hover {
+            transform: scale(1.1);
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input {
+            color:#070707;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .search-bar button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff5722;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        .categories {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .categories a {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #333333;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .wallpapers {
+            column-count: 3;
+            column-gap: 1rem;
+            padding: 20px;
+        }
+
+        .wallpaper {
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            break-inside: avoid;
+            transition: transform 0.3s;
+        }
+
+        .wallpaper:hover {
+            transform: scale(1.05);
+        }
+
+        .wallpaper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .wallpaper .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .wallpaper:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay a {
+            color: #ffffff;
+            font-size: 24px;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        @media (max-width: 768px) {
+            .wallpapers {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .wallpapers {
+                column-count: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Spexels</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">Popular</a></li>
+                <li><a href="#">New</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="search-bar">
+            <input type="text" placeholder="Search wallpapers...">
+            <button id="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+         <script>
+            document.getElementById("search-btn").addEventListener("click", function() { 
+            var query = document.querySelector("input").value;
+            if(query.trim() === "") {
+               alert("Please enter a search query");
+            }else{
+                window.location.href = "/search?q=" + query;
+            }
+        });  
+    </script> 
+    </header>
+    <div class="categories">
+        <a href="/search?q=Nature">Nature</a>
+        <a href="/search?q=Technology">Technology</a>
+        <a href="/search?q=Abstract">Abstract</a>
+        <a href="/search?q=Animals">Animals</a>
+        <a href="/search?q=Cities">Cities</a>
+    </div>
+    <div class="wallpapers">
+        <div class="wallpaper">
+            <img src="https://storage.googleapis.com/a1aa/image/NL2oS0cLaAbCBxMGcvVM9lbcrXApSGzaBluXsIeQ0ezaocenA.jpg"
+                alt="A beautiful nature landscape with mountains and a lake">
+            <div class="overlay">
+                <a href="#"><i class="fas fa-eye"></i></a>
+            </div>
+        </div>
+        <div class="wallpaper">
+            <img src="https://storage.googleapis.com/a1aa/image/w1sb4eVPyflMbUUsFzRNgo6hyEV9Qz48zXrZx7npS44KocenA.jpg"
+                alt="A close-up of a modern computer motherboard with glowing lights">
+            <div class="overlay">
+                <a href="#"><i class="fas fa-eye"></i></a>
+            </div>
+        </div>
+        <div class="wallpaper">
+            <img src="https://storage.googleapis.com/a1aa/image/gvPLcytqVxL7NBJ80lScthK5f8viHS5sdYlvPR5bKjKIUOfTA.jpg"
+                alt="An abstract design with vibrant colors and geometric shapes">
+            <div class="overlay">
+                <a href="#"><i class="fas fa-eye"></i></a>
+            </div>
+        </div>
+        <div class="wallpaper">
+            <img src="https://storage.googleapis.com/a1aa/image/MesfnPwL1QrSukj2d3fQxe1SpkevHGCSirAg0fHeYYVnKUOfTA.jpg"
+                alt="A majestic lion in the wild, looking directly at the camera">
+            <div class="overlay">
+                <a href="#"><i class="fas fa-eye"></i></a>
+            </div>
+        </div>
+        <div class="wallpaper">
+            <img src="https://storage.googleapis.com/a1aa/image/ee3uepDpjaFPKJKuolHDd11s12DpG7XhqZvDosVHL0y5Q58nA.jpg"
+                alt="A stunning cityscape at night with skyscrapers and lights">
+            <div class="overlay">
+                <a href="#"><i class="fas fa-eye"></i></a>
+            </div>
+        </div>
+        <div class="wallpaper">
+            <img src="https://storage.googleapis.com/a1aa/image/yB8VfqQHN3VrGS4zJg2HWDBcVLesMTdszfndmN2wsS9BR58nA.jpg"
+                alt="A serene beach with clear blue water and white sand">
+            <div class="overlay">
+                <a href="#"><i class="fas fa-eye"></i></a>
+            </div>
+        </div>
+        <div class="wallpaper">
+            <img src="https://storage.googleapis.com/a1aa/image/bVoAENw4cCLAHJ3KKNVdVkJaJHQImGjoFKQPgn496q5FKnfJA.jpg"
+                alt="A futuristic city with flying cars and tall buildings">
+            <div class="overlay">
+                <a href="#"><i class="fas fa-eye"></i></a>
+            </div>
+        </div>
+        <div class="wallpaper">
+            <img src="https://storage.googleapis.com/a1aa/image/je8V3wv33iwgO62P6KkK7c6S0l17pQXZnokUuHbEZ4pJUOfTA.jpg"
+                alt="A close-up of a colorful parrot with vibrant feathers">
+            <div class="overlay">
+                <a href="#"><i class="fas fa-eye"></i></a>
+            </div>
+        </div>
+        <div class="wallpaper">
+            <img src="https://storage.googleapis.com/a1aa/image/v7l5DIF4X55TC9lKhKVqLvOx8uEgvXRH1fIyCNjsCfRZocenA.jpg"
+                alt="A beautiful sunset over a calm ocean with a sailboat">
+            <div class="overlay">
+                <a href="#"><i class="fas fa-eye"></i></a>
+            </div>
+        </div>
+        <div class="wallpaper">
+            <img src="https://storage.googleapis.com/a1aa/image/pWX7dtCzkNafaiOieKz8vGXJve4fv7XAfQhcohBRF9bxAlzfE.jpg"
+                alt="A close-up of a modern smartphone with a sleek design">
+            <div class="overlay">
+                <a href="#"><i class="fas fa-eye"></i></a>
+            </div>
+        </div>
+        <div class="wallpaper">
+            <img src="https://storage.googleapis.com/a1aa/image/y9xJuvsBkE5vLZNeCStHmk0N5eg23dfQGR9VWYK0bei4hy5PB.jpg"
+                alt="A vibrant abstract painting with bold brush strokes">
+            <div class="overlay">
+                <a href="#"><i class="fas fa-eye"></i></a>
+            </div>
+        </div>
+        <div class="wallpaper">
+            <img src="https://storage.googleapis.com/a1aa/image/APek7wZeWxgr4EnBUPTffuFNuduribvtdeIOQHMhv8JnBlzfE.jpg"
+                alt="A close-up of a tiger's face with piercing eyes">
+            <div class="overlay">
+                <a href="#"><i class="fas fa-eye"></i></a>
+
+            </div>
+        </div>
+        <div class="wallpaper">
+            <img src="https://storage.googleapis.com/a1aa/image/seYiYOpcsHUkByplee5ZCSIsf9gJgGfZLTjINMS4fEFcEKnfJA.jpg"
+                alt="A panoramic view of a city skyline during sunset">
+            <div class="overlay">
+                <a href="#"><i class="fas fa-eye"></i></a>
+            </div>
+        </div>
+        <div class="wallpaper">
+            <img src="https://storage.googleapis.com/a1aa/image/Y9G1AnpdkCpqCxeouzzMcZMPJyELYHyKvk0nPXbCeeHPQ58nA.jpg"
+                alt="A beautiful forest with tall trees and sunlight filtering through">
+            <div class="overlay">
+                <a href="#"><i class="fas fa-eye"></i></a>
+            </div>
+        </div>
+        <div class="wallpaper">
+            <img src="https://storage.googleapis.com/a1aa/image/elrgpguGZoWDRiduMpC28PBlnMCfMEFH1LddNudM6jwNocenA.jpg"
+                alt="A close-up of a modern gaming console with glowing lights">
+            <div class="overlay">
+                <a href="#"><i class="fas fa-eye"></i></a>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

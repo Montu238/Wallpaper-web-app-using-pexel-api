@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spexel - Innovative Animation</title>
+  <style>
+    /* General Reset */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0f0f0f; /* Deep dark background */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* Animation Container */
+    .animation-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* Pixel Explosion Effect */
+    .pixel-explosion {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, #a29bfe, #74b9ff, #00cec9, #81ecec);
+      border-radius: 50%;
+      filter: blur(15px);
+      animation: explode 2s ease-out forwards;
+      z-index: 1;
+    }
+
+    /* Explosion Animation */
+    @keyframes explode {
+      0% {
+        transform: scale(0.1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.5);
+        opacity: 0.8;
+      }
+      100% {
+        transform: scale(5);
+        opacity: 0;
+      }
+    }
+
+    /* Spexel Logo */
+    .logo {
+      position: relative;
+      font-size: 5rem;
+      font-weight: bold;
+      color: #ffffff;
+      text-shadow: 0 0 15px #74b9ff, 0 0 30px #81ecec;
+      opacity: 0;
+      z-index: 2;
+      animation: fadeIn 2.5s ease-in forwards 1.5s;
+    }
+
+    /* Logo Fade-In Animation */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="animation-container">
+    <div class="pixel-explosion"></div>
+    <h1 class="logo">SPEXELS</h1>
+  </div>
+  <script>
+      const serverPort = "<%= port %>";
+      setTimeout(() => {
+        console.log('Redirecting to home');
+        window.location.href = `http://localhost:${serverPort}/home`; // Redirect to the home page after the animation
+      }, 5000); // Matches the total animation duration (2s + 1.5s delay)
+  </script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<html>
+<head>
+    <title>Spexels - Search Results</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        header {
+            background-color: #1f1f1f;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+            transition: transform 0.3s;
+        }
+
+        nav ul li:hover {
+            transform: scale(1.1);
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input {
+            color:#070707;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .search-bar button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff5722;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        .categories {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .categories a {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #333333;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .wallpapers {
+            column-count: 3;
+            column-gap: 1rem;
+            padding: 20px;
+        }
+
+        .wallpaper {
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            break-inside: avoid;
+            transition: transform 0.3s;
+        }
+
+        .wallpaper:hover {
+            transform: scale(1.05);
+        }
+
+        .wallpaper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .wallpaper .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .wallpaper:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay a {
+            color: #ffffff;
+            font-size: 24px;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        @media (max-width: 768px) {
+            .wallpapers {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .wallpapers {
+                column-count: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Spexels</h1>
+        <nav>
+            <ul>
+                <li><a href="/home">Home</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">Popular</a></li>
+                <li><a href="#">New</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="search-bar">
+            <input type="text" placeholder="Search wallpapers..." value="<%= query %>">
+            <button id="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+        <script>
+            document.getElementById("search-btn").addEventListener("click", function() { 
+            var query = document.querySelector("input").value;
+            if(query.trim() === "") {
+               alert("Please enter a search query");
+            }else{
+                window.location.href = "/search?q=" + query;
+            }
+        });  
+    </script>
+    </header>
+
+    <div class="categories">
+        <a href="/search?q=Nature">Nature</a>
+        <a href="/search?q=Technology">Technology</a>
+        <a href="/search?q=Abstract">Abstract</a>
+        <a href="/search?q=Animals">Animals</a>
+        <a href="/search?q=Cities">Cities</a>
+    </div>
+
+    <h2 style="text-align: center; color: #fff;">Showing results for "<%= query %>"</h2>
+
+    <div class="wallpapers">
+        
+        <% wallpaper.forEach(function(img) { %>
+                <div class="wallpaper">
+                    <img src="<%= img %>" alt="Wallpaper">
+                    <div class="overlay">
+                        <a href="<%= img %>"><i class="fas fa-eye"></i></a>
+                    </div>
+                </div>
+                <% }); %>
+
+                </div>
+</body>
+</html>
