@@ -9,10 +9,6 @@ const __dirname = path.dirname(__filename);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
 
-const getSearchResults = (query) => {
-
-};
-
 
 app.get("/", (req, res) => {
       const port = process.env.PORT;
